@@ -1,7 +1,7 @@
 # Maintainer: Jeancarlo Hidalgo <jeancahu@gmail.com>
 
 pkgname=spotify
-pkgver=1.0
+pkgver=2.0
 pkgrel=1
 epoch=1
 pkgdesc="Spotify: A spotify package version by Jean"
@@ -13,13 +13,11 @@ depends_x86_64=('libcurl-gnutls')
 
 options=('!strip')
 
-source=('spotify.protocol'
-	'LICENSE')
+source=(LICENSE::"https://aur.archlinux.org/cgit/aur.git/plain/LICENSE?h=spotify")
 
 source_x86_64=('data.deb')
 
-sha512sums=('SKIP'
-	    'SKIP')
+sha512sums=('SKIP')
 
 sha512sums_x86_64=('SKIP')
 
@@ -47,9 +45,6 @@ package () {
 
     # Symlink spotify binary which is located in /opt
     ln -sf /opt/spotify/spotify "${pkgdir}/usr/bin/spotify"
-
-    # Copy protocol file for KDE
-    install -Dm644 "${srcdir}/spotify.protocol" "${pkgdir}/usr/share/kservices5/spotify.protocol"
 
     # Install license
     # https://www.spotify.com/legal/end-user-agreement
